@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    image: backend.instagram
+    build: .
+    command: npm start
+    ports:
+      - "3030:3000"
+    volumes:
+      - ./src/:/usr/app/src
