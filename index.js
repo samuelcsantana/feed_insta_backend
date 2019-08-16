@@ -4,14 +4,15 @@ const path = require('path');
 const cors = require('cors');
 const winston = require('./src/config/winston');
 const morgan = require('morgan');
-
+require('dotenv').config();
 const app = express();
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 app.use(morgan('combined', { stream: winston.stream }));
 
-mongoose.connect('mongodb+srv://dbUser:dmH1TejXfX7wJZ0H@cluster0-xosr0.mongodb.net/instagram?retryWrites=true&w=majority',{
+
+mongoose.connect(process.env.DB_URL,{
     useNewUrlParser: true
 })
 
@@ -32,7 +33,3 @@ const PORT = 3000;
 const HOST = '0.0.0.0';
 
 server.listen(PORT,HOST);
-
-app.get('/', (req, res)=>{
-    res.send('HELLO WOLD!')
-})

@@ -60,5 +60,6 @@ typings/
 # next.js build output
 .next
 
-# Jimp images
+# resized files
 uploads/resized/*
+!uploads/resized/.gitkeep
